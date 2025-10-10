@@ -1,0 +1,44 @@
+﻿@model TallinnaRakenduslikKolledz.Models.InstructorIndexData
+@{
+	ViewData["Title"] = "Õpetajad";
+}
+<h2>Õpetajad</h2>
+<p>
+	<a asp-action="Create">Lisa õpetaja</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Perekonnanimi</th>
+			<th>Eesnimi</th>
+			<th>Tööle asumis kuupäev</th>
+			<th>Kursused</th>
+			<th>Kabinet</th>
+			<th>Hindeid antud</th>
+			<th>Tööriistad</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var õpetaja in Model.Instructors)
+		{
+			string selectedRow ="";
+			if (õpetaja.ID == (int?) ViewData["InstructorID"])
+			{
+				selectedRow = "table-success";
+			}
+			<tr class="@selectedRow">
+				<td>@Html.DisplayFor(modelItem=>õpetaja.LastName)</td>
+				<td>@Html.DisplayFor(modelItem=>õpetaja.FirstName)</td>
+				<td>@Html.DisplayFor(modelItem=>õpetaja.HireDate)</td>
+				<td>@Html.DisplayFor(modelItem=>õpetaja.CourseAssignments)</td>
+				<td>@Html.DisplayFor(modelItem=>õpetaja.OfficeAssignment)</td>
+				<td>@Html.DisplayFor(modelItem=>õpetaja.GradesGiven)</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@õpetaja.ID">Muuda</a>
+					<a asp-action="Edit" asp-route-id="@õpetaja.ID">Vaata</a>
+					<a asp-action="Edit" asp-route-id="@õpetaja.ID">Kustuta</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
