@@ -1,0 +1,53 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Student
+
+@{
+	ViewData["Title"] = "Kustuta õpilane";
+}
+
+<h1>Kustuta õpilane</h1>
+<h3>
+	Kas oled kindel, et tahad õpilast @Model.FirstName @Model.LastName eemaldada?
+</h3>
+<div>
+	<h4>Õpilane @Model.FirstName @Model.LastName</h4>
+	<hr/>
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.LastName) </dt>
+		<dd class="col-sm-10">@Html.DisplayFor(model => Model.LastName) </dd>
+	</dl>
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.FirstName) </dt>
+		<dd class="col-sm-10">@Html.DisplayFor(model => Model.FirstName) </dd>
+	</dl>
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.EnrollmentDate) </dt>
+		<dd class="col-sm-10">@Html.DisplayFor(model => Model.EnrollmentDate) </dd>
+	</dl>
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.IdCode) </dt>
+		<dd class="col-sm-10">@Html.DisplayFor(model => Model.IdCode) </dd>
+	</dl>
+
+	@if (Model.Enrollments != null)
+	{
+		foreach (var courseEnrollment in Model.Enrollments)
+		{
+			<dl class="row">
+				<dd class="col-sm-10">@(courseEnrollment)</dd>
+			</dl>
+		}
+	}
+	@if (Model.Age != null)
+	{
+		@Model.Age;
+	}
+	@if (Model.Gender != null)
+	{
+		@Model.Gender
+	}
+</div>
+
+<form asp-action="Delete">
+	<input type="hidden" asp-for="Id"/>
+	<input type="submit" value="Kustuta õpilane" class="btn btn-danger"/>  <a asp-action="Index">Tühista</a>
+</form>
