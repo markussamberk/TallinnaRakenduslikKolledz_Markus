@@ -15,7 +15,7 @@ namespace TallinnaRakenduslikKolledz
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             var app = builder.Build();
-            CreateDbIfNotExists(app)
+            CreateDbIfNotExists(app);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -41,7 +41,7 @@ namespace TallinnaRakenduslikKolledz
 
         private static void CreateDbIfNotExists(IHost app)
         {
-            using (var scope = app Services.CreateScope()) 
+            using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
@@ -52,8 +52,9 @@ namespace TallinnaRakenduslikKolledz
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "Error occurred on creating DB")
+                    logger.LogError(ex, "Error occurred on creating DB");
                 }
+            }
         }
     }
 }
