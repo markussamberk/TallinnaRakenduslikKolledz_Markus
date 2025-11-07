@@ -1,5 +1,81 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TallinnaRakenduslikKolledz.Models.Instructor
+
 @{
+	ViewData["Title"] = "Lisa õpetaja";
 }
+<h1>Lisa Õpetaja</h1>
+<h4></h4>
+<br />
+<div class="row">
+	<div class="col-md-8">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+			<div class="form-group">
+				<label asp-for="LastName"></label>
+				<input asp-for="LastName" class="form-control"/>
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="FirstName"></label>
+				<input asp-for="FirstName" class="form-control"/>
+				<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="HireDate"></label>
+				<input asp-for="HireDate" class="form-control"/>
+				<span asp-validation-for="HireDate" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="GradesGiven"></label>
+				<input asp-for="GradesGiven" class="form-control" />
+				<span asp-validation-for="GradesGiven" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Height"></label>
+				<input asp-for="Height" class="form-control" />
+				<span asp-validation-for="Height" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="LessonsTaught"></label>
+				<input asp-for="LessonsTaught" class="form-control" />
+				<span asp-validation-for="LessonsTaught" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<table>
+						<tr>
+							@{
+								int count = 0;
+								List<TallinnaRakenduslikKolledz.Models.AssignedCourseData> assignedCourses = ViewBag.Courses;
+
+								foreach(var course in assignedCourses)
+								{
+									if (count++ % 3 == 0)
+									{
+										@:</tr><tr>
+									}
+									@:<td>
+									<input 
+										type="checkbox"
+										name="selectedCourses"
+										value="@course.CourseID"
+										@(Html.Raw(course.Assigned ? "checked:\"checked\"":""))
+									/>
+									
+								}
+							}
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div>
+				<input type="submit" value="Sisesta" class="btn btn-primary"/>			
+			</div>
+			<div>
+				<a asp-action="Index" class="btn btn-danger">Tühista lisamine</a>
+			</div>
+		</form>
+	</div>
+</div>

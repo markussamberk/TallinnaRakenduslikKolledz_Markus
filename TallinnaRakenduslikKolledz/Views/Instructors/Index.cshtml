@@ -1,5 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TallinnaRakenduslikKolledz.Models.InstructorIndexData
 @{
+	ViewData["Title"] = "Õpetajad";
 }
+<h2>Õpetajad</h2>
+<p>
+	<a asp-action="Create">Lisa õpetaja</a>
+</p>
+<table>
+	<thead>
+		<tr>
+			<th>Perekonnanimi</th>
+			<th>Eesnimi</th>
+			<th>Töölevõtukuupäev</th>
+			<th>Kabinet</th>
+			<th>Kursused</th>
+			<th>Hindeid Antud</th>
+			<th>Tööriistad</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var instructor in Model.Instructors)
+		{
+			string selectedRow = "";
+			if(instructor.ID ==(int?)ViewData["InstructorID"])
+			{
+				selectedRow = "table-success";
+			}
+			<tr class="@selectedRow">
+				<td>@Html.DisplayFor(modelItem => instructor.LastName)</td>
+				<td>@Html.DisplayFor(modelItem => instructor.FirstName)</td>
+				<td>@Html.DisplayFor(modelItem => instructor.HireDate)</td>
+				<td>
+					@if(instructor.OfficeAssignment != null)
+					{
+						@instructor.OfficeAssignment.Location
+					}
+				</td>
+				<td>
+					@foreach (var course in instructor.CourseAssignments)
+					{
+						@course.Course.CourseId @: @course.Course.Title <br/>
+					}
+				</td>
+				<td>@Html.DisplayFor(modelItem => instructor.Height)</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@instructor.ID">Muuda</a>
+					<a asp-action="Details" asp-route-id="@instructor.ID">Vaata</a>
+					<a asp-action="Delete" asp-route-id="@instructor.ID">Kustuta</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
