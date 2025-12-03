@@ -12,3 +12,4 @@ namespace TallinnaRakenduslikKolledz.Models
         public string Location { get; set; }
     }
 }
+//
