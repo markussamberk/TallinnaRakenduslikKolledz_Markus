@@ -1,0 +1,46 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Instructor
+
+@{
+	ViewData["Title"] = "Detailid";
+}
+
+<h1>Detailid</h1>
+<div>
+	<form asp-action="Details">
+		<h4>Õpetaja: @Model.FirstName @Model.LastName</h4>
+		<hr />
+		<dl class="row">
+			<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.LastName)</dt>
+			<dt class="col-sm-2">@Html.DisplayFor(model => Model.LastName)</dt>
+		</dl>
+
+		<dl class="row">
+			<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.FirstName)</dt>
+			<dt class="col-sm-2">@Html.DisplayFor(model => Model.FirstName)</dt>
+		</dl>
+
+		<dl class="row">
+			<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.HireDate)</dt>
+			<dt class="col-sm-2">@Html.DisplayFor(model => Model.HireDate)</dt>
+		</dl>
+
+		<dl class="row">
+			<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.GradesGiven)</dt>
+			<dt class="col-sm-2">@Html.DisplayFor(model => Model.GradesGiven)</dt>
+		</dl>
+
+		<dl class="row">
+			<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.Height)</dt>
+			<dt class="col-sm-2">@Html.DisplayFor(model => Model.Height)</dt>
+		</dl>
+
+		<dl class="row">
+			<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.LessonsTaught)</dt>
+			<dt class="col-sm-2">@Html.DisplayFor(model => Model.LessonsTaught)</dt>
+		</dl>		
+	</form>
+</div>
+
+<form asp-action="Index">
+	<input type="submit" value="Tagasi loendisse" class="btn btn-primary" />
+</form>
