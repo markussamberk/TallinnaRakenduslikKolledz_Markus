@@ -1,0 +1,59 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Instructor
+
+@{
+	ViewData["Title"] = "Muuda õpetaja andmed";
+}
+<h1>Muuda õpetaja andmed</h1>
+<hr />
+<div class=="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+			<div class="form-group">
+				<label asp-for="LastName" class="control-label"></label>
+				<input asp-for="LastName" class="form-control" />
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="FirstName" class="control-label"></label>
+				<input asp-for="FirstName" class="form-control" />
+				<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="HireDate" class="control-label"></label>
+				<input asp-for="HireDate" class="form-control" />
+				<span asp-validation-for="HireDate" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="GradesGiven" class="control-label"></label>
+				<input asp-for="GradesGiven" class="form-control" />
+				<span asp-validation-for="GradesGiven" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Height" class="control-label"></label>
+				<input asp-for="Height" class="form-control" />
+				<span asp-validation-for="Height" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="LessonsTaught" class="control-label"></label>
+				<input asp-for="LessonsTaught" class="form-control" />
+				<span asp-validation-for="LessonsTaught" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<input type="submit" value="Muuda" class="btn btn-primary" />
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Tagasi loendisse</a>
+</div>

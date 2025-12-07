@@ -28,7 +28,7 @@ namespace TallinnaRakenduslikKolledz.Models
         /**/
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
-        [Display(Name = "Tööleasumiskuupäev")]
+        [Display(Name = "Töölevõtukuupäev")]
         public DateTime HireDate { get; set; }
 
         public ICollection<CourseAssignment>? CourseAssignments { get; set; }
