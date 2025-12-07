@@ -32,7 +32,7 @@ namespace TallinnaRakenduslikKolledz.Models
         public DateTime HireDate { get; set; }
 
         public ICollection<CourseAssignment>? CourseAssignments { get; set; }
-        public OfficeAssignment? OfficeAssignment { get; set; }
+        public OfficeAssignment? OfficeAssignments { get; set; }
 
         [Display(Name = "Hindeid Antud")]
         public int? GradesGiven { get; set; }

@@ -1,0 +1,65 @@
+﻿@model TallinnaRakenduslikKolledz.Models.InstructorIndexData
+
+@{
+	ViewData["Title"] = "Õpetajad";
+}
+
+<h2>Õpetajad</h2>
+<p>
+	<a asp-action="Create"> Lisa õpetaja</a>
+</p>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Perekonnanimi</th>
+			<th>Eesnimi</th>
+			<th>Töölevõtukuupäev</th>
+			<th>Kontoriülesanded</th>
+			<th>Kursuseülesanded</th>
+			<th>Hindeid antud</th>
+			<th>Pikkus</th>
+			<th>Tunde õpetatud</th>
+			<th>🛠Tööriistad</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var instructor in Model.Instructors)
+		{
+			string selectedRow = "";
+
+			if (instructor.ID == (int?)ViewData["InstructorID"])
+			{
+				selectedRow = "table-success";
+			}
+			<tr class="selectedRow">
+				<td>@Html.DisplayFor(modelItem => instructor.LastName)</td>
+				<td>@Html.DisplayFor(modelItem => instructor.FirstName)</td>
+				<td>@Html.DisplayFor(modelItem => instructor.HireDate)</td>
+				<td>
+					@if (instructor.OfficeAssignments != null)
+					{
+						@instructor.OfficeAssignments.Location
+
+					}
+				</td>
+				<td>
+					@foreach (var course in instructor.CourseAssignments)
+					{
+						@course.Course.CourseId @: @course.Course.Title <br/>
+					}
+				</td>
+				<td>@Html.DisplayFor(modelItem => instructor.GradesGiven)</td>
+				<td>@Html.DisplayFor(modelItem => instructor.Height)</td>
+				<td>@Html.DisplayFor(modelItem => instructor.LessonsTaught)</td>
+				<td>
+					<a asp-action="QuickAction" asp-route-id="@instructor.ID">Muuda</a>
+					<a asp-action="Details" asp-route-id="@instructor.ID">Vaata</a>
+					<a asp-action="Delete" asp-route-id="@instructor.ID">Kustuta</a>
+				</td>
+
+			</tr>
+
+		}
+	</tbody>
+</table>
