@@ -1,14 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 
-/// <summary>
-/// Summary description for Class1
-/// </summary>
-public class Class1
+namespace TallinnaRakenduslikKolledz.Controllers
 {
-	public Class1()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public class DepartmentsController : Controller
+    {
+
+    }
 }
