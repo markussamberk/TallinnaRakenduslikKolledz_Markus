@@ -1,0 +1,50 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Department
+
+@{
+	ViewData["Title"] = "Kustuta osakond";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+
+@if (ViewBag.action == "Delete")
+{
+	<P>
+		<h3>Kustuta osakond:</h3>
+	</P>
+}
+else
+{
+	<p>
+		<h3>Osakonna andmed</h3>
+	</p>
+}
+<div>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Name)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.Name)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.DepartmentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.DepartmentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Budget)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.Budget)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.AmountOfWorkers)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.AmountOfWorkers)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.City)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.City)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.PhoneNumber)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.PhoneNumber)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.InstructorID)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.InstructorID)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.StartDate)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(Model => Model.StartDate)</dt>
+	</dl>
+	<form asp-action="Delete">
+		<input type="hidden" asp-for="DepartmentID" />
+		<input type="hidden" asp-for="RowVersion" />
+		@if (ViewBag.SelectedAction == "Delete")
+		{
+			<input type="submit" value="Kustuta" class="btn btn-danger" />
+		}
+		<a asp-action="Index">Tühista</a>
+	</form>
+</div>
