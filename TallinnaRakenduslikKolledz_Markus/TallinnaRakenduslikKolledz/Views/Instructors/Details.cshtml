@@ -40,7 +40,13 @@
 		</dl>		
 	</form>
 </div>
-
+<tbody>
+	<tr>
+		<td>
+			<a asp-action="Edit" asp-route-id="@Model.ID">Muuda</a>
+		</td>
+	</tr>
+</tbody>
 <form asp-action="Index">
 	<input type="submit" value="Tagasi loendisse" class="btn btn-primary" />
 </form>
