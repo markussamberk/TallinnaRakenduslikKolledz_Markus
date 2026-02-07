@@ -1,0 +1,135 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Department
+@{
+	ViewData["Title"] = "Create";
+}
+@if(ViewBag.test == "Create")
+{
+	<h2>Loo uus osakond</h2>
+	<hr />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+				<input type="hidden" asp-for="RowVersion" value="@Html.Raw("0")" />
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+				<div class="form-group">
+					<label asp-for="Name" class="control-label"></label>
+					<input asp-for="Name" class="form-label" />
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="InstructorID" class="control-label"></label>
+					<select asp-for="InstructorID" class="form-label" asp-items="ViewBag.InstructorID">
+						<option value=""> --Palun vali õpetaja-- </option>
+					</select>
+					<span asp-validation-for="InstructorID" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="Budget" class="control-label"></label>
+					<input asp-for="Budget" class="form-label" />
+					<span asp-validation-for="Budget" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="StartDate" class="control-label"></label>
+					<input asp-for="StartDate" class="form-label" />
+					<span asp-validation-for="StartDate" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="AmountOfWorkers" class="control-label"></label>
+					<input asp-for="AmountOfWorkers" class="form-label" />
+					<span asp-validation-for="AmountOfWorkers" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="City" class="control-label"></label>
+					<input asp-for="City" class="form-label" />
+					<span asp-validation-for="City" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="PhoneNumber" class="control-label"></label>
+					<input asp-for="PhoneNumber" class="form-label" />
+					<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+				</div>
+
+				<div class="form-group">
+					<input type="submit" value="Create" class="btn btn-primary" />  <a asp-action="Index" class="btn btn-primary">Tühista</a>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+}
+else
+{
+	<h1>Muuda </h1>
+	<div>
+		<h2>Muuda osakonna andmed</h2>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<form asp-action="Edit">
+					<input type="hidden" asp-for="RowVersion" value="@Html.Raw(Model.DepartmentID)" />
+
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+					<input type="hidden" asp-for="DepartmentID" />
+
+					<div class="form-group">
+						<label asp-for="Name" class="control-label">Name</label>
+						<input asp-for="Name" class="control-label" />
+						<span asp-validation-for="Name" class="text-danger" />
+					</div>
+
+					<div class="form-group">
+						<label asp-for="Budget" class="control-label">Budget</label>
+						<input asp-for="Budget" class="control-label" />
+						<span asp-validation-for="Budget" class="text-danger" />
+					</div>
+
+					<div class="form-group">
+						<label asp-for="StartDate" class="control-label">StartDate</label>
+						<input asp-for="StartDate" class="control-label" />
+						<span asp-validation-for="StartDate" class="text-danger" />
+					</div>
+
+					<div class="form-group">
+						<label asp-for="InstructorID" class="control-label">InstructorID</label>
+						<select asp-for="InstructorID" class="control-label" asp-items="ViewBag.InstructorID">
+							<option value=""> --Palun Vali Opetaja-- </option>
+						</select>
+						<span asp-validation-for="InstructorID" class="text-danger" />
+					</div>
+
+
+					<div class="form-group">
+						<label asp-for="AmountOfWorkers" class="control-label">StudentsDroppedOut</label>
+						<input asp-for="AmountOfWorkers" class="control-label" />
+						<span asp-validation-for="AmountOfWorkers" class="text-danger" />
+					</div>
+
+					<div class="form-group">
+						<label asp-for="City" class="control-label">TotalGraduates</label>
+						<input asp-for="City" class="control-label" />
+						<span asp-validation-for="City" class="text-danger" />
+					</div>
+
+					<div class="form-group">
+						<label asp-for="PhoneNumber" class="control-label">Administrator</label>
+						<input asp-for="PhoneNumber" class="control-label" />
+						<span asp-validation-for="PhoneNumber" class="text-danger" />
+					</div>
+
+					<div class="form-group">
+						<input type="submit" value="Muuda" class="btn btn-primary" /> | <a asp-action="Index" class="btn btn-danger">Tühista</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+}

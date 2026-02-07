@@ -22,6 +22,27 @@ namespace TallinnaRakenduslikKolledz.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
+            ViewData["test"] = "Create";
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("DepartmentID, Name, Budget, StartDate, RowVersion, InstructorID, AmountOfWorkers, City, PhoneNumber")] Department department)
+        {
+            ViewData["test"] = "Create";
+            if (ModelState.IsValid)
+            {
+                _context.Add(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName", department.InstructorID);
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             ViewData["action"] = "Delete";
@@ -59,6 +80,43 @@ namespace TallinnaRakenduslikKolledz.Controllers
 
             var department = await _context.Departments.FirstOrDefaultAsync(d => d.DepartmentID == id);
             return View(nameof(Delete), department);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var department = await _context.Departments.FindAsync(id);
+            if (department == null)
+            {
+                return NotFound();
+            }
+            ViewData["SelectedAction"] = "Edit";
+            return View("Create", department);
+
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmEdit([Bind("DepartmentID, Name, Budget, StartDate, RowVersion, InstructorID, AmountOfWorkers, City, PhoneNumber")] Department department)
+        {
+            if (department.DepartmentID == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Departments.Update(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            return View("Create", department);
         }
     }
 }
