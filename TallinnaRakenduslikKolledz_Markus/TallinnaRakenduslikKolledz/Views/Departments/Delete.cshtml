@@ -41,7 +41,7 @@ else
 	<form asp-action="Delete">
 		<input type="hidden" asp-for="DepartmentID" />
 		<input type="hidden" asp-for="RowVersion" />
-		@if (ViewBag.SelectedAction == "Delete")
+		@if (ViewBag.action == "Delete")
 		{
 			<input type="submit" value="Kustuta" class="btn btn-danger" />
 		}
