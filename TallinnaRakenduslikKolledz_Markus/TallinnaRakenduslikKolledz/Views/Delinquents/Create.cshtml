@@ -1,0 +1,54 @@
+﻿@using TallinnaRakenduslikKolledz.Models
+@model TallinnaRakenduslikKolledz.Models.Delinquent
+@{
+	ViewData["Title"] = "Uus Korrarikkuja";
+}
+<h1>Lisa uus korrarikkuja</h1>
+<h4>Siseta info:</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+			<div>
+				<label asp-for="FirstName" class="control-label"></label>
+				<input asp-for="FirstName" class="form-control" />
+				<span asp-validation-for="FirstName" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label asp-for="LastName" class="control-label"></label>
+				<input asp-for="LastName" class="form-control" />
+				<span asp-validation-for="LastName" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label asp-for="Violation" class="control-label"></label>
+				<select asp-for="Violation" class="form-control" asp-items="Html.GetEnumSelectList<Violation>()">
+					<option value="" class="form-control">--Vali rikutud reegel--</option>
+				</select>
+				<span asp-validation-for="Violation" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label asp-for="DelinquentType" class="control-label"></label>
+				<select asp-for="DelinquentType" class="form-control" asp-items="Html.GetEnumSelectList<DelinquentType>()">
+					<option value="" class="form-control">--Vali Tüüp--</option>
+				</select>
+				<span asp-validation-for="DelinquentType" class="text-danger"></span>
+			</div>
+
+			<div>
+				<label asp-for="Description" class="control-label">Description</label>
+				<input asp-for="Description" class="from-control" />
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+
+
+			<div class="form-group">
+				<input type="submit" value="Sisesta" class="btn btn-primary" /> | <a asp-action="Index" class="btn btn-outline-primary">Tühista</a>
+			</div>
+		</form>
+	</div>
+</div>

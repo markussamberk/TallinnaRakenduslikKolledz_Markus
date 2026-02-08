@@ -8,7 +8,9 @@ namespace TallinnaRakenduslikKolledz.Models
         public int DelinquentID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        [EnumDataType(typeof(Violation))]
         public Violation Violation { get; set; }
+        [EnumDataType(typeof(DelinquentType))]
         public DelinquentType DelinquentType { get; set; }
         public string? Description { get; set; }
 
