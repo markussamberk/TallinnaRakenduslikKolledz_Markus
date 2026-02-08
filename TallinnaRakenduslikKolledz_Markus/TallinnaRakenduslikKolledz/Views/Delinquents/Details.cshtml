@@ -1,0 +1,30 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Delinquent
+
+@{
+	ViewData["Title"] = "Korrarikkuja detailid";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.FirstName) @Html.DisplayFor(modelItem => Model.LastName)</h2>
+<p>
+	<h3>Detailid</h3>
+</p>
+
+<div>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(modelItem => Model.DelinquentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(modelItem => Model.DelinquentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(modelItem => Model.LastName)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(modelItem => Model.LastName)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(modelItem => Model.FirstName)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(modelItem => Model.FirstName)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(modelItem => Model.Violation)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(modelItem => Model.Violation)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(modelItem => Model.DelinquentType)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(modelItem => Model.DelinquentType)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(modelItem => Model.Description)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(modelItem => Model.Description)</dt>
+	</dl>
+
+	<a asp-action="Index">Tagasi loendisse</a>
+</div>
