@@ -1,0 +1,36 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Course
+
+@{
+	ViewData["Title"] = "Kustuta kursus";
+}
+
+<h2>@Html.DisplayFor(modelItem => Model.Title)</h2>
+<p>
+	<h3>Kustuta kursus</h3>
+</p>
+
+<div>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.Title)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.Title)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.CourseId)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.CourseId)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.Credits)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.Credits)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.DepartmentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.DepartmentID)</dt>
+	</dl>
+
+	<form asp-action="Delete">
+		<input type="hidden" asp-for="CourseId" />
+		@if (ViewBag.SelectedAction == "Delete")
+		{
+			<input type="submit" value="Kustuta" class="btn btn-danger" />
+		}
+		<a asp-action="Index">Tühista</a>
+
+	</form>
+
+
+</div>
