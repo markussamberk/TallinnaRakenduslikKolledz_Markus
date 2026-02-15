@@ -1,0 +1,62 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Delinquent
+
+@{
+	ViewData["Title"] = "Muuda korrarikkujat";
+}
+
+<h1>Muuda</h1>
+<div>
+	<h2>Muuda korrarikkuja andmed</h2>
+	<hr />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Edit">
+				<div asp-validation-summary=ModelOnly class="text-danger"></div>
+				<input type="hidden" asp-for="DelinquentID" />
+				
+				<div class="form-group">
+					<label asp-for="LastName" class="control-label">Last Name</label>
+					<input asp-for="LastName" class="control-label" />
+					<span asp-validation-for="LastName" class="text-danger"></span>
+				</div>
+				
+				<div class="form-group">
+					<label asp-for="FirstName" class="control-label">First Name</label>
+					<input asp-for="FirstName" class="control-label" />
+					<span asp-validation-for="FirstName" class="text-danger"></span>
+				</div>
+				
+				<div>
+					<label asp-for="Violation" class="control-label"></label>
+					<select asp-for="Violation" class="form-control" asp-items="Html.GetEnumSelectList<Violation>()">
+						<option value="" class="form-control">--Vali rikutud reegel--</option>
+					</select>
+					<span asp-validation-for="Violation" class="text-danger"></span>
+				</div>
+
+				<div>
+					<label asp-for="DelinquentType" class="control-label"></label>
+					<select asp-for="DelinquentType" class="form-control" asp-items="Html.GetEnumSelectList<DelinquentType>()">
+						<option value="" class="form-control">--Vali Tüüp--</option>
+					</select>
+					<span asp-validation-for="DelinquentType" class="text-danger"></span>
+				</div>
+				
+				<div class="form-group">
+					<label asp-for="Description" class="control-label">Description</label>
+					<input asp-for="Description" class="control-label" />
+					<span asp-validation-for="Description" class="text-danger"></span>
+				</div>
+				
+				<div class="form-group">
+					<input type="submit" value="Muuda" class="btn btn-primary" />
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Tagasi loendisse</a>
+</div>
