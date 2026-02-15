@@ -1,0 +1,30 @@
+﻿@model TallinnaRakenduslikKolledz.Models.Delinquent
+@{
+	ViewData["Title"] = "Kustuta korrarikkuja";
+}
+
+<h1>Kustuta korrarikkuja</h1>
+
+<div>
+	<hr/>
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.DelinquentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => Model.DelinquentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.LastName)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => Model.LastName)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.FirstName)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => Model.FirstName)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.Violation)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => Model.Violation)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.DelinquentType)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => Model.DelinquentType)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => Model.Description)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => Model.Description)</dt>
+	</dl>
+
+	<form asp-action="Delete">
+		<input type="hidden" asp-for="DelinquentID" />
+		<input type="submit" value="Kustuta" class="btn btn-danger" />
+		<a asp-action="Index">Tühista</a>
+	</form>
+</div>
